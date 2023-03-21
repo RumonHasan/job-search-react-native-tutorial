@@ -13,6 +13,7 @@ import { icons, SIZES } from '../../../constants';
 
 const Welcome = () => {
   const router = useRouter();
+  const jobTypes = ['Full-time', 'Part-time', 'Contractor'];
   return (
     <View>
       <View style={styles.container}>
@@ -35,6 +36,16 @@ const Welcome = () => {
             resizeMode="contain"
           ></Image>
         </TouchableOpacity>
+      </View>
+      <View style={styles.tabsContainer}>
+        <FlatList
+          data={jobTypes}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={styles.tab(activeJobType, item)}>
+              <Text>{item}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </View>
   );
